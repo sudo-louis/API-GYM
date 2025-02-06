@@ -13,6 +13,7 @@ class LoginCliente extends Model implements Authenticatable, JWTSubject
     use AuthenticatableTrait, Notifiable;
 
     protected $connection = 'mongodb';
+
     protected $collection = 'clientes_login';
 
     protected $fillable = [

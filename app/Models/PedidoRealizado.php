@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class PedidoRealizado extends Model
 {
     use HasFactory;
 
-    protected $table = 'pedidos_realizados';
+    protected $connection = 'mongodb';
+
+    protected $collection = 'pedidos_realizados';
 
     protected $fillable = [
         'cliente_id',
@@ -26,6 +28,6 @@ class PedidoRealizado extends Model
 
     public function producto()
     {
-        return $this->belongsTo(ProductoAlta::class, 'producto_id');
+        return $this->belongsTo(Producto::class, 'producto_id');
     }
 }

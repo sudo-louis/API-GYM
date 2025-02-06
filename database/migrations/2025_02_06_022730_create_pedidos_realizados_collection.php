@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('cliente_id')->references('id')->on('clientes_login')->onDelete('cascade');
-            $table->foreign('producto_id')->references('id')->on('productos_alta')->onDelete('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pedidos_realizados');
+        Schema::connection('mongodb')->dropIfExists('pedidos_realizados');
     }
 };
